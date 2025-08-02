@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hộp thư yêu thương 💌</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to bottom, #b2ebf2, #e0f7fa);
+        overflow: hidden;
+      }
+
+      .screen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.95);
+        text-align: center;
+      }
+
+      .start-screen {
+        display: flex;
+      }
+
+      .start-text {
+        font-size: 22px;
+        color: #d81b60;
+        margin-bottom: 20px;
+        max-width: 80%;
+      }
+
+      button {
+        padding: 10px 20px;
+        background: #ff80ab;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #f06292;
+      }
+
+      video {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .envelope {
+        width: 140px;
+        height: 100px;
+        background: url("https://cdn-icons-png.flaticon.com/512/561/561127.png")
+          no-repeat center;
+        background-size: contain;
+        animation: popin 1s ease forwards;
+        margin-bottom: 20px;
+      }
+
+      @keyframes popin {
+        from {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Thư mời đi date */
+      .letter-screen {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: auto;
+        background: #fff0f5;
+        padding: 30px 0;
+      }
+
+      .letter-container {
+        margin: auto;
+        width: 90%;
+        max-width: 500px;
+        background: #fff;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+        animation: popIn 1s ease forwards;
+      }
+
+      @keyframes popIn {
+        0% {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      h2 {
+        text-align: center;
+        color: #d63384;
+        margin-bottom: 20px;
+      }
+
+      p {
+        line-height: 1.6;
+        font-size: 16px;
+        color: #333;
+      }
+
+      .highlight {
+        color: #d63384;
+        font-weight: bold;
+      }
+
+      .schedule {
+        margin-top: 20px;
+        background: #ffe6f0;
+        border-left: 5px solid #ff66a3;
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 14px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Form hỏi ban đầu -->
+    <div class="screen start-screen" id="startScreen">
+      <div class="start-text">
+        Em yêu vui lòng chọn nhận thư để xe chạy nhé ạ iuuu bé 💌
+      </div>
+      <button onclick="startVideo()">Nhận thư</button>
+    </div>
+
+    <!-- Video -->
+    <div class="screen video-screen" id="videoScreen">
+      <video id="videoLove" src="guiem.mp4"></video>
+    </div>
+
+    <!-- Hộp thư -->
+    <div class="screen message-screen" id="messageScreen">
+      <div class="envelope"></div>
+      <div style="color: #d81b60; font-size: 18px; margin-bottom: 10px">
+        Người iu của bé gửi bé nì 💌
+      </div>
+      <button onclick="showLetter()">Mở thư</button>
+    </div>
+
+    <!-- Nội dung thư -->
+    <div class="letter-screen" id="letterScreen">
+      <div class="letter-container">
+        <h2>Thư Mời Đi Date 💌</h2>
+        <p>
+          Gửi
+          <span class="highlight">Người yêu của anh Phạm Lê Khánh Tâm</span>,
+        </p>
+        <p>
+          Anh <span class="highlight">Lê Thiên Dũng</span> xin gửi đến bé lời
+          chúc thật nhiều nụ cười và niềm vui mỗi ngày 💖
+        </p>
+        <p>
+          Cảm ơn bé vì đã luôn là một cô gái vô cùng dễ thương, đáng yêu và làm
+          tim anh rung rinh mỗi ngày 💗
+        </p>
+        <p>
+          Để thể hiện tấm lòng biết ơn và muốn cùng bé tạo thêm kỷ niệm, anh
+          trân trọng mời bé đi chơi với lịch trình như sau:
+        </p>
+
+        <div class="schedule">
+          <p><strong>1. Ăn tối cùng anh 🍽️</strong></p>
+          <ul>
+            <li>Địa điểm: <strong>Tokbokki </strong></li>
+            <li>Thời gian: <strong>17h00, ngày 4 tháng 8 năm 2024</strong></li>
+          </ul>
+
+          <p><strong>2. Trà sữa - Tâm sự - Chill 🍹</strong></p>
+          <ul>
+            <li>Địa điểm: <strong>TBox Cafe </strong></li>
+            <li>Thời gian: <strong>Sau khi ăn xong nhé 💖</strong></li>
+          </ul>
+        </div>
+
+        <p style="margin-top: 20px">
+          Anh sẽ đến đón bé lúc
+          <strong>14h00, ngày 4 tháng 8 năm 2024</strong> tại cổng nhà bé. Bé
+          chỉ cần mang theo nụ cười ngọt ngào là đủ rồi 🥰
+        </p>
+
+        <div class="footer">
+          Mong bé đồng ý tham gia buổi date này nhé ❤️<br />
+          Yêu bé nhiều! <br />
+          <em>– Lê Thiên Dũng –</em>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const startScreen = document.getElementById("startScreen");
+      const videoScreen = document.getElementById("videoScreen");
+      const messageScreen = document.getElementById("messageScreen");
+      const letterScreen = document.getElementById("letterScreen");
+      const video = document.getElementById("videoLove");
+
+      function startVideo() {
+        startScreen.style.display = "none";
+        videoScreen.style.display = "flex";
+        video.play();
+      }
+
+      video.addEventListener("ended", function () {
+        videoScreen.style.display = "none";
+        messageScreen.style.display = "flex";
+      });
+
+      function showLetter() {
+        messageScreen.style.display = "none";
+        letterScreen.style.display = "block";
+        document.body.style.overflow = "auto";
+      }
+    </script>
+  </body>
+</html>
